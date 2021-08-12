@@ -1,16 +1,7 @@
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
 .navbar-icon-top .navbar-nav .nav-link>.fa {
     position: relative;
     width: 36px;
     font-size: 24px;
-}
-
-.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
-    font-size: 0.75rem;
-    position: absolute;
-    right: 0;
-    font-family: sans-serif;
 }
 
 .navbar-icon-top .navbar-nav .nav-link>.fa {
@@ -18,98 +9,44 @@
     line-height: 12px;
 }
 
-.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
-    top: -10px;
+.welcome-header {
+    font-family: 'Montserrat', sans-serif;
 }
 
-@media (min-width: 576px) {
-    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
-        text-align: center;
-        display: table-cell;
-        height: 70px;
-        vertical-align: middle;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
-        display: block;
-        width: 48px;
-        margin: 2px auto 4px auto;
-        top: 0;
-        line-height: 24px;
-    }
-
-    .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
-        top: -7px;
-    }
+.welcome-header-desc {
+    font-family: 'Montserrat', sans-serif;
+    color: #A7A7A7
 }
 
-@media (min-width: 768px) {
-    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
-        text-align: center;
-        display: table-cell;
-        height: 70px;
-        vertical-align: middle;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa {
-        display: block;
-        width: 48px;
-        margin: 2px auto 4px auto;
-        top: 0;
-        line-height: 24px;
-    }
-
-    .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa>.badge {
-        top: -7px;
-    }
+.bg-navbar {
+    background-color: #F8B195;
 }
 
-@media (min-width: 992px) {
-    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
-        text-align: center;
-        display: table-cell;
-        height: 70px;
-        vertical-align: middle;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa {
-        display: block;
-        width: 48px;
-        margin: 2px auto 4px auto;
-        top: 0;
-        line-height: 24px;
-    }
-
-    .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa>.badge {
-        top: -7px;
-    }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #355C7D;
+    color: #FBFAF5;
 }
 
-@media (min-width: 1200px) {
-    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
-        text-align: center;
-        display: table-cell;
-        height: 70px;
-        vertical-align: middle;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+.sign-up {
+    color: #FBFAF5;
+    padding: 18px 60px;
+    border-style: solid;
+    border-width: thin;
+}
 
-    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa {
-        display: block;
-        width: 48px;
-        margin: 2px auto 4px auto;
-        top: 0;
-        line-height: 24px;
-    }
+.sign-up-form {
+    background-color: #F8B195;
+}
 
-    .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa>.badge {
-        top: -7px;
-    }
+.card-title {
+    color: #fdece5;
+}
+
+.hr-home {
+    background-color: #fdece5;
+}
+
+.account-info {
+    color: #1C1E21;
 }
