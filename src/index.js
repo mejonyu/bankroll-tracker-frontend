@@ -205,6 +205,7 @@ function renderTable() {
         .then(r => r.json())
         .then(sessionsArray => {
             const tableBody = document.querySelector("#sessions-table-body")
+            tableBody.innerHTML = ''
 
             let count = 0
             while (count < sessionsArray.length) {
@@ -318,7 +319,7 @@ function renderEditSession(session_id) {
                         </div>
 
                         <div class="form-group col-md-6">
-                            <button id="delete-session-button" data-id="${session_id}" class="btn btn-secondary sign-up">Delete</button>
+                            <button id="delete-session-button" data-id="${session_id}" class="btn btn-danger sign-up">Delete</button>
                         </div>
                     </div>
 
@@ -602,6 +603,114 @@ function renderUpdateProfile() {
     mainContainer.append(updateProfileDiv)
 }
 
+function renderLanding() {
+    body.innerHTML = ''
+
+    const reloadLandingDiv = document.createElement('div')
+
+    reloadLandingDiv.innerHTML = `
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-navbar">
+        <a class="navbar-brand ms-5" href="#">
+            <img class="navbar-brand" src='./assets/images/bankroll-tracker-logo-2.png' id="nav-logo" href="#" style="width: 60px;">
+            <span class="ms-1 align-middle">Bankroll Tracker</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-envelope-o">
+                            <span class="badge badge-primary">11</span>
+                        </i>
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li> -->
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-log-in">
+                        <i class="fa fa-sign-in nav-log-in">
+                        </i>
+                        Log In
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-sign-up">
+                        <i class="fa fa-user-plus nav-sign-up"></i>
+                        Sign Up
+                    </a>
+                </li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-12" style="background-color: #F67280; color: #F67280;">f</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12" style="background-color: #C06C84; color: #C06C84;">f</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12" style="background-color: #6C5B7B; color: #6C5B7B;">f</div>
+    </div>
+
+    <br><br>
+
+    <div class="container" id="main-container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="welcome-header">Take charge of your bankroll.</h1>
+                <p class="welcome-header-desc">
+                    <em><b>Organize and keep track of your poker sessions and earnings.</b></em>
+                </p>
+                <button class="sign-up btn btn-primary" id="get-started-button">Get Started</button>
+            </div>
+
+            <div class="col-lg-6">
+                <img class="navbar-brand" src='./assets/images/bankroll-tracker-logo-2.png' style="width: 280px;">
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-center">© 2021 Bankroll Tracker</div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    `
+
+    body.append(reloadLandingDiv)
+}
+
 navbar.addEventListener('click', event => {
     if (event.target.matches('.nav-sign-up')) {
         renderSignUp()
@@ -613,6 +722,8 @@ navbar.addEventListener('click', event => {
         renderHome()
     } else if (event.target.matches('.nav-account')) {
         renderAccount()
+    } else if (event.target.matches('#nav-logo')) {
+        renderLanding()
     }
 })
 
@@ -646,11 +757,11 @@ mainContainer.addEventListener('click', event => {
             })
     }
     /* else if (event.target.matches('#option1')) {
-           renderOverallGraph()
-       } else if (event.target.matches('#option2')) {
-           renderStakesGraph()
-       } else if (event.target.matches('#option3')) {
-           renderLocationGraph()
+            renderOverallGraph()
+        } else if (event.target.matches('#option2')) {
+            renderStakesGraph()
+        } else if (event.target.matches('#option3')) {
+            renderLocationGraph()
        } */
 })
 
@@ -784,7 +895,6 @@ mainContainer.addEventListener('submit', event => {
             })
             .then(r => r.json())
             .then(data => {
-                console.log(data)
                 renderHome()
             })
     }
