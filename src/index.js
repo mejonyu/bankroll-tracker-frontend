@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000'
+const url = 'https://radiant-springs-89234.herokuapp.com/'
 let currentUser
 
 const navbar = document.querySelector("nav")
