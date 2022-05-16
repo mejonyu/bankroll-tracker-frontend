@@ -41,7 +41,7 @@ function renderSignUp() {
         </form>
     </div> -->
 
-    <div class="login-card" style="transform: translate(-50%, -34.5%);">
+    <div class="login-card" style="transform: translate(-50%, -3.5%);">
         <h1>Sign Up</h1>
         <form id="sign-up-form">
             <div class="txt_field">
