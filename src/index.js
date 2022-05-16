@@ -146,15 +146,13 @@ function renderHome() {
                 <em><b>View your past session history to the right, or log a new session below.</b></em>
             </p>
             <button class="sign-up btn btn-primary" id="new-session-button">Add Session</button>
-            
-        
         </div>
 
         <canvas class="col-lg-8 id="graph-div">
         </canvas>
     </div>
     <br><br>
-    <table class="table table-striped table-bordered table-dark">
+    <!-- <table class="table table-striped table-bordered table-dark table-scroll">
         <thead id="sessions-table-head">
             <tr>
                 <th scope="col">Session #</th>
@@ -164,6 +162,21 @@ function renderHome() {
                 <th scope="col">Out For</th>
                 <th scope="col">Profit</th>
                 <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="sessions-table-body">
+        </tbody>
+    </table> -->
+    <table class="table-scroll">
+        <thead>
+            <tr>
+                <th>Session</th>
+                <th>Location</th>
+                <th>Stakes</th>
+                <th>Buy In</th>
+                <th>Out For</th>
+                <th>Profit</th>
+                <th style="text-align: center;">Action</th>
             </tr>
         </thead>
         <tbody id="sessions-table-body">
@@ -224,12 +237,27 @@ function renderTable() {
                 len = data_arr.length
                 while (i < len) {
                     tableData = document.createElement('td')
-                    tableData.innerHTML = data_arr[i]
+                    if (i == 5) {
+                        profitStatus = document.createElement('p')
+                        if (data_arr[i] < 0) {
+                            profitStatus.classList.add('profit', 'profit-neg')
+                            profitStatus.innerHTML = data_arr[i]
+                        } else if (data_arr[i] > 0) {
+                            profitStatus.classList.add('profit', 'profit-pos')
+                            profitStatus.innerHTML = `+${data_arr[i]}`
+                        } else {
+                            profitStatus.classList.add('profit', 'profit-zero')
+                            profitStatus.innerHTML = data_arr[i]
+                        }
+                        tableData.append(profitStatus)
+                    } else {
+                        tableData.innerHTML = data_arr[i]
+                    }
                     bodyContents.append(tableData)
                     i += 1
                 }
                 const editSessionButton = document.createElement('button')
-                editSessionButton.classList = 'btn btn-link'
+                editSessionButton.classList = 'btn edit-btn'
                 editSessionButton.setAttribute('id', 'edit-session-button')
                 editSessionButton.textContent = 'Edit'
                 bodyContents.append(editSessionButton)
