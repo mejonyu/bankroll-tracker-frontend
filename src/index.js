@@ -10,7 +10,7 @@ function renderSignUp() {
     const signUpDiv = document.createElement('div')
 
     signUpDiv.innerHTML = `
-    <div class="card w-50 m-auto mt-5 p-3 text-center sign-up-form">
+    <!-- <div class="card w-50 m-auto mt-5 p-3 text-center sign-up-form">
         <form id="sign-up-form">
             <div class="card-title">
                 <h2>Sign Up</h2>
@@ -39,6 +39,29 @@ function renderSignUp() {
                 <input type="submit" name="submit" value="Create Account" class="btn btn-primary sign-up">
             </div>
         </form>
+    </div> -->
+
+    <div class="login-card" style="transform: translate(-50%, -34.5%);">
+        <h1>Sign Up</h1>
+        <form id="sign-up-form">
+            <div class="txt_field">
+                <input type="text" name="first_name" required>
+                <label>First Name</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="last_name" required>
+                <label>Last name</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <input type="submit" name="submit" value="Create Account">
+        
+            <div class="signup_link">
+                Have an account? <button class="sign-up-btn" id="log-in-button">Log In</button>
+            </div>
+        </form>
     </div>
     `
 
@@ -51,7 +74,7 @@ function renderLogIn() {
     const loginDiv = document.createElement('div')
 
     loginDiv.innerHTML = `
-    <div class="card w-50 m-auto mt-5 p-3 text-center sign-up-form">
+    <!-- <div class="card w-50 m-auto mt-5 p-3 text-center sign-up-form">
         <form id="log-in-form">
             <div class="card-title">
                 <h2>Log In</h2>
@@ -67,6 +90,21 @@ function renderLogIn() {
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <input type="submit" name="submit" value="Log In" class="btn btn-primary sign-up">
+            </div>
+        </form>
+    </div> -->
+
+    <div class="login-card">
+        <h1>Log In</h1>
+        <form id="log-in-form">
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <input type="submit" name="submit" value="Log in">
+        
+            <div class="signup_link">
+                Don't have an account? <button class="sign-up-btn" id="sign-up-button">Sign up</button>
             </div>
         </form>
     </div>
@@ -544,7 +582,7 @@ function renderAccount() {
                 <li class="list-group-item list-group-item-dark">Username: ${currentUser.username}</li>
             </ul> -->
             
-            <table>
+            <table style="box-shadow: none;">
                 <tr>
                     <td>First Name: ${currentUser.first_name}</td>
                 </tr>
@@ -571,7 +609,7 @@ function renderAccount() {
                 <li class="list-group-item list-group-item-dark" id="percent-profitability"></li>
             </ul> -->
 
-            <table>
+            <table style="box-shadow: none;">
                 <tr>
                     <td id="sessions-played"></td>
                 </tr>
@@ -579,7 +617,7 @@ function renderAccount() {
                     <td id="total-profit-loss"></td>
                 </tr>
                 <tr>
-                    <td id="percent-profitability></td>
+                    <td id="percent-profitability"></td>
                 </tr>
             </table>
 
@@ -782,8 +820,10 @@ navbar.addEventListener('click', event => {
 })
 
 mainContainer.addEventListener('click', event => {
-    if (event.target.matches('#get-started-button')) {
+    if (event.target.matches('#get-started-button') || event.target.matches('#sign-up-button')) {
         renderSignUp()
+    } else if (event.target.matches('#log-in-button')) {
+        renderLogIn()
     } else if (event.target.matches('#new-session-button')) {
         renderNewSession()
     } else if (event.target.matches('#delete-user-button')) {
