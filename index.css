@@ -131,7 +131,7 @@ tr:nth-child(even) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -5%);
-    width: 35vw;
+    width: 350px;
     background: white;
     border-radius: 10px;
     color: #666666;
