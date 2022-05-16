@@ -167,21 +167,23 @@ function renderHome() {
         <tbody id="sessions-table-body">
         </tbody>
     </table> -->
-    <table class="table-scroll">
-        <thead>
-            <tr>
-                <th>Session</th>
-                <th>Location</th>
-                <th>Stakes</th>
-                <th>Buy In</th>
-                <th>Out For</th>
-                <th>Profit</th>
-                <th style="text-align: center;">Action</th>
-            </tr>
-        </thead>
-        <tbody id="sessions-table-body">
-        </tbody>
-    </table>
+    <div style="overflow-x:auto; box-shadow: 0 5px 10px #e1e5ee;">
+        <table class="table-scroll">
+            <thead>
+                <tr>
+                    <th scope="col">Session</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Stakes</th>
+                    <th scope="col">Buy In</th>
+                    <th scope="col">Out For</th>
+                    <th scope="col">Profit</th>
+                    <th scope="col" style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="sessions-table-body">
+            </tbody>
+        </table>
+    </div>
     `
 
     mainContainer.append(homeDiv)
@@ -536,11 +538,23 @@ function renderAccount() {
                 <em><b>Below you will find your profile information. You can also edit your profile if you choose.</b></em>
             </p>
 
-            <ul class="list-group">
+            <!-- <ul class="list-group">
                 <li class="list-group-item list-group-item-dark">First Name: ${currentUser.first_name}</li>
                 <li class="list-group-item list-group-item-secondary account-info">Last Name: ${currentUser.last_name}</li>
                 <li class="list-group-item list-group-item-dark">Username: ${currentUser.username}</li>
-            </ul>
+            </ul> -->
+            
+            <table>
+                <tr>
+                    <td>First Name: ${currentUser.first_name}</td>
+                </tr>
+                <tr>
+                    <td>Last Name: ${currentUser.last_name}</td>
+                </tr>
+                <tr>
+                    <td>Username: ${currentUser.username}</td>
+                </tr>
+            </table>
 
             <br>
 
@@ -551,11 +565,23 @@ function renderAccount() {
             <hr class="hr-home">
             <p class="welcome-header-desc">Here are some statistics summarizing your activity.</p>
             
-            <ul class="list-group">
+            <!-- <ul class="list-group">
                 <li class="list-group-item list-group-item-dark" id="sessions-played"></li>
                 <li class="list-group-item list-group-item-secondary account-info" id="total-profit-loss"></li>
                 <li class="list-group-item list-group-item-dark" id="percent-profitability"></li>
-            </ul>
+            </ul> -->
+
+            <table>
+                <tr>
+                    <td id="sessions-played"></td>
+                </tr>
+                <tr>
+                    <td id="total-profit-loss"></td>
+                </tr>
+                <tr>
+                    <td id="percent-profitability></td>
+                </tr>
+            </table>
 
         </div>
         <div class="col-lg-4">
