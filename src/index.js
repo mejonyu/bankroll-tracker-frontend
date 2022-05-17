@@ -317,7 +317,7 @@ function renderEditSession(session_id) {
             const editSessionDiv = document.createElement('div')
 
             editSessionDiv.innerHTML = `
-            <div class="card w-50 m-auto mt-5 p-3 sign-up-form">
+            <!-- <div class="card w-50 m-auto mt-5 p-3 sign-up-form">
                 <form id="edit-session-form" data-id="${session_id}">
                     <div class="card-title text-center">
                         <h2>Edit Session</h2>
@@ -393,6 +393,68 @@ function renderEditSession(session_id) {
 
                     <br>
                 </form>
+            </div> -->
+
+            <div class="login-card" style="padding-bottom: 18px;">
+                <h1>Edit Session</h1>
+                <form id="edit-session-form" data-id="${session_id}">
+                    <label for="game-location" class="new_session_label">Location</label>
+                    <div class="select_field" style="margin-bottom: 10px;">
+                        <select id="game-location" value="${sessionObj.location}" name="location">
+                            <option>Bellagio</option>
+                            <option>Venetian</option>
+                            <option>Wynn</option>
+                            <option>Mirage</option>
+                            <option>Borgata</option>
+                            <option>Commerce</option>
+                            <option>Caesars Palace</option>
+                            <option>ARIA</option>
+                            <option>Home Game</option>
+                            <option>Other Casino</option>
+                        </select>
+                    </div>
+                    <label for="stakes" class="new_session_label">Stakes</label>
+                    <div class="select_field">
+                        <select id="stakes" value="${sessionObj.stakes}" name="stakes">
+                            <option>0.1/0.2</option>
+                            <option>0.15/0.3</option>
+                            <option>0.25/0.5</option>
+                            <option>0.5/1</option>
+                            <option>1/2</option>
+                            <option>1/3</option>
+                            <option>2/4</option>
+                            <option>2/5</option>
+                            <option>3/5</option>
+                            <option>3/6</option>
+                            <option>4/8</option>
+                            <option>5/10</option>
+                            <option>10/20</option>
+                            <option>15/30</option>
+                            <option>25/50</option>
+                            <option>50/100</option>
+                            <option>100/200</option>
+                            <option>200/400</option>
+                            <option>250/500</option>
+                            <option>300/600</option>
+                            <option>400/800</option>
+                            <option>500/1000</option>
+                        </select>
+                    </div>
+
+                    <div class="txt_field">
+                        <input type="text" name="buy_in" value="${sessionObj.buy_in}" required>
+                        <label>Buy In</label>
+                    </div>
+                    <div class="txt_field">
+                        <input type="text" name="out_for" value="${sessionObj.out_for}" required>
+                        <label>Out For</label>
+                    </div>
+                    
+                    <input type="submit" name="submit" value="Update">
+                    <div style="padding-top: 10px;">
+                        <button id="delete-session-button" data-id="${session_id}">Delete</button>
+                    </div>
+                </form>
             </div>
             `
 
@@ -458,9 +520,10 @@ function renderOverallGraph() {
                             color: 'white'
                         },
                         legend: {
-                            labels: {
+                            /* labels: {
                                 color: 'white'
-                            }
+                            } */
+                            display: false
                         }
                     },
                     scales: {
@@ -774,114 +837,6 @@ function renderUpdateProfile() {
     mainContainer.append(updateProfileDiv)
 }
 
-function renderLanding() {
-    body.innerHTML = ''
-
-    const reloadLandingDiv = document.createElement('div')
-
-    reloadLandingDiv.innerHTML = `
-    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-navbar">
-        <a class="navbar-brand ms-5" href="#">
-            <img class="navbar-brand" src='./assets/images/bankroll-tracker-logo-2.png' id="nav-logo" href="#" style="width: 60px;">
-            <span class="ms-1 align-middle">Bankroll Tracker</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-envelope-o">
-                            <span class="badge badge-primary">11</span>
-                        </i>
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> -->
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link nav-log-in">
-                        <i class="fa fa-sign-in nav-log-in">
-                        </i>
-                        Log In
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-sign-up">
-                        <i class="fa fa-user-plus nav-sign-up"></i>
-                        Sign Up
-                    </a>
-                </li>
-            </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
-        </div>
-    </nav>
-
-    <div class="row">
-        <div class="col-lg-12" style="background-color: #F67280; color: #F67280;">f</div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12" style="background-color: #C06C84; color: #C06C84;">f</div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12" style="background-color: #6C5B7B; color: #6C5B7B;">f</div>
-    </div>
-
-    <br><br>
-
-    <div class="container" id="main-container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h1 class="welcome-header">Take charge of your bankroll.</h1>
-                <p class="welcome-header-desc">
-                    <em><b>Organize and keep track of your poker sessions and earnings.</b></em>
-                </p>
-                <button class="sign-up btn btn-primary" id="get-started-button">Get Started</button>
-            </div>
-
-            <div class="col-lg-6">
-                <img class="navbar-brand" src='./assets/images/bankroll-tracker-logo-2.png' style="width: 280px;">
-            </div>
-        </div>
-    </div>
-
-    <footer class="py-5">
-        <div class="container">
-            <div class="d-flex justify-content-center">© 2021 Bankroll Tracker</div>
-        </div>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    `
-
-    body.append(reloadLandingDiv)
-}
-
 navbar.addEventListener('click', event => {
     if (event.target.matches('.nav-sign-up')) {
         renderSignUp()
@@ -893,8 +848,6 @@ navbar.addEventListener('click', event => {
         renderHome()
     } else if (event.target.matches('.nav-account')) {
         renderAccount()
-    } else if (event.target.matches('#nav-logo')) {
-        renderLanding()
     }
 })
 
@@ -1042,8 +995,13 @@ mainContainer.addEventListener('submit', event => {
             })
             .then(r => r.json())
             .then(data => {
-                currentUser = data
-                renderAccount()
+                if (data.error) {
+                    alert(data.error)
+                    event.target.reset()
+                } else {
+                    currentUser = data
+                    renderAccount()
+                }
             })
     } else if (event.target.matches('#edit-session-form')) {
         event.preventDefault()
