@@ -99,6 +99,15 @@ td {
     cursor: pointer;
 }
 
+.cancel-btn {
+    text-decoration: none;
+    color: #4c87e6;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
 .profit {
     border-radius: 0.2rem;
     padding: 0.2rem 1rem;
@@ -216,7 +225,7 @@ form .txt_field {
 }
 
 .signup_link {
-    margin: 30px 0;
+    margin: 15px 0;
     text-align: center;
     font-size: 16px;
     color: #666666;

@@ -119,48 +119,59 @@ function loginUser(userObj) {
 
     navbar.innerHTML = ''
 
+    const navLogo = document.createElement('a')
+    navLogo.className = 'navbar-brand ms-5'
+    navLogo.setAttribute('href', '#')
+    navLogo.innerHTML = `
+    <img class="navbar-brand" src='./assets/images/bankroll-tracker-logo-2.png' href="#" style="width: 60px;">
+    <span class="ms-1 align-middle">Bankroll Tracker</span>
+    `
+    navbar.append(navLogo)
+
+    const navButton = document.createElement('button')
+    navButton.className = 'navbar-toggler'
+    navButton.setAttribute('type', 'button')
+    navButton.setAttribute('data-toggle', 'collapse')
+    navButton.setAttribute('data-target', '#navbarSupportedContent')
+    navButton.setAttribute('aria-controls', 'navbarSupportedContent')
+    navButton.setAttribute('aria-expanded', 'false')
+    navButton.setAttribute('aria-label', 'Toggle navigation')
+    navButton.innerHTML = `
+    <span class="navbar-toggler-icon"></span>
+    `
+    navbar.append(navButton)
+
     const navDiv = document.createElement('div')
-    navDiv.className = 'navbar navbar-icon-top navbar-expand-lg navbar-dark bg-navbar'
-
+    navDiv.className = 'collapse navbar-collapse'
+    navDiv.setAttribute('id', 'navbarSupportedContent')
     navDiv.innerHTML = `
-    <a class="navbar-brand ms-5" href="#">
-        <img class="navbar-brand" src='./assets/images/bankroll-tracker-logo-2.png' href="#" style="width: 60px;">
-        <span class="ms-1 align-middle">Bankroll Tracker</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+    <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
+            <li class="nav-item" style="cursor: pointer;">
                 <a class="nav-link nav-home">
                     <i class="fa fa-home nav-home"></i>
                     Home
                 </a>
             </li>
         </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link nav-account">
-                    <i class="fa fa-user nav-account">
-                    </i>
-                    Account
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-sign-out">
-                    <i class="fa fa-sign-out nav-sign-out"></i>
-                    Sign Out
-                </a>
-            </li>
-        </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
-    </nav>
+        <li class="nav-item" style="cursor: pointer;">
+            <a class="nav-link nav-account">
+                <i class="fa fa-user nav-account">
+                </i>
+                Account
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-sign-out" style="cursor: pointer;">
+                <i class="fa fa-sign-out nav-sign-out"></i>
+                Sign Out
+            </a>
+        </li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
     `
     navbar.append(navDiv)
 
@@ -277,17 +288,19 @@ function renderTable() {
                 len = data_arr.length
                 while (i < len) {
                     tableData = document.createElement('td')
-                    if (i == 5) {
+                    if (i == 3 || i == 4) {
+                        tableData.innerHTML = `$${data_arr[i]}`
+                    } else if (i == 5) {
                         profitStatus = document.createElement('p')
                         if (data_arr[i] < 0) {
                             profitStatus.classList.add('profit', 'profit-neg')
-                            profitStatus.innerHTML = data_arr[i]
+                            profitStatus.innerHTML = `-$${Math.abs(data_arr[i])}`
                         } else if (data_arr[i] > 0) {
                             profitStatus.classList.add('profit', 'profit-pos')
-                            profitStatus.innerHTML = `+${data_arr[i]}`
+                            profitStatus.innerHTML = `+$${data_arr[i]}`
                         } else {
                             profitStatus.classList.add('profit', 'profit-zero')
-                            profitStatus.innerHTML = data_arr[i]
+                            profitStatus.innerHTML = `$${data_arr[i]}`
                         }
                         tableData.append(profitStatus)
                     } else {
@@ -395,7 +408,7 @@ function renderEditSession(session_id) {
                 </form>
             </div> -->
 
-            <div class="login-card" style="padding-bottom: 18px;">
+            <div class="login-card">
                 <h1>Edit Session</h1>
                 <form id="edit-session-form" data-id="${session_id}">
                     <label for="game-location" class="new_session_label">Location</label>
@@ -455,6 +468,9 @@ function renderEditSession(session_id) {
                         <button id="delete-session-button" data-id="${session_id}">Delete</button>
                     </div>
                 </form>
+                <div class="signup_link">
+                    <button class="cancel-btn" id="edit-session-cancel-button">Cancel</button>
+                </div>
             </div>
             `
 
@@ -621,7 +637,7 @@ function renderNewSession() {
         </form>
     </div> -->
 
-    <div class="login-card" style="padding-bottom: 18px;">
+    <div class="login-card">
         <h1>New Session</h1>
         <form id="new-session-form">
 
@@ -679,6 +695,9 @@ function renderNewSession() {
             
             <input type="submit" name="submit" value="Add Session">
         </form>
+        <div class="signup_link">
+                <button class="cancel-btn" id="create-session-cancel-button">Cancel</button>
+        </div>
     </div>
     `
 
@@ -772,7 +791,12 @@ function renderStatistics() {
             const percentProfitability = document.getElementById('percent-profitability')
 
             sessionsPlayed.innerHTML = `Number of Sessions Played: ${stats.sessionsPlayed}`
-            totalProfitLoss.innerHTML = `Total Profit/Loss: $${stats.totalProfitLoss}`
+            if (stats.totalProfitLoss < 0) {
+                totalProfitLoss.innerHTML = `Total Profit/Loss: -$${Math.abs(stats.totalProfitLoss)}`
+            } else {
+                totalProfitLoss.innerHTML = `Total Profit/Loss: $${stats.totalProfitLoss}`
+            }
+
             percentProfitability.innerHTML = `% of Profitable Sessions: ${stats.percentProfitability}%`
         })
 }
@@ -814,7 +838,7 @@ function renderUpdateProfile() {
         </form>
     </div> -->
 
-    <div class="login-card" style="padding-bottom: 18px;">
+    <div class="login-card">
         <h1>Update Profile</h1>
         <form id="update-profile-form">
             <div class="txt_field">
@@ -831,6 +855,9 @@ function renderUpdateProfile() {
             </div>
             <input type="submit" name="submit" value="Update">
         </form>
+        <div class="signup_link">
+            <button class="cancel-btn" id="update-profile-cancel-button">Cancel</button>
+        </div>
     </div>
     `
 
@@ -881,6 +908,10 @@ mainContainer.addEventListener('click', event => {
                 renderHome()
                 alert(thingIGetBack.message)
             })
+    } else if (event.target.matches('#create-session-cancel-button') || event.target.matches('#edit-session-cancel-button')) {
+        renderHome()
+    } else if (event.target.matches('#update-profile-cancel-button')) {
+        renderAccount()
     }
     /* else if (event.target.matches('#option1')) {
             renderOverallGraph()
