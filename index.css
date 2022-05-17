@@ -274,7 +274,7 @@ form .txt_field {
     width: 100%;
     height: 50px;
     border: 1px solid;
-    background: #c62828;
+    background: #de4343;
     border-radius: 25px;
     font-size: 18px;
     color: white;
@@ -284,6 +284,6 @@ form .txt_field {
 }
 
 #delete-session-button:hover {
-    border-color: #c62828;
+    border-color: #de4343;
     transition: .5s;
 }
