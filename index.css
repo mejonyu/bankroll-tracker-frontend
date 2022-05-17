@@ -220,5 +220,52 @@ form .txt_field {
     text-align: center;
     font-size: 16px;
     color: #666666;
-    padding-bottom: 15px;
+    padding-bottom: 18px;
+}
+
+.select_field {
+    position: relative;
+    background-color: #e6e6e6;
+    border-radius: 2px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.select_field select {
+    font-size: 1rem;
+    font-weight: 200;
+    padding: 8px 24px 8px 10px;
+    width: 105%;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.select_field select:active,
+.select_field select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.select_field:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #aaa;
+}
+
+.new_session_label {
+    position: relative;
+    left: 5px;
+    color: #2691d9;
+    font-size: 16px;
+    pointer-events: none;
 }

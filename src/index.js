@@ -486,7 +486,7 @@ function renderNewSession() {
     const newSessionDiv = document.createElement('div')
 
     newSessionDiv.innerHTML = `
-    <div class="card w-50 m-auto mt-5 p-3 sign-up-form">
+    <!-- <div class="card w-50 m-auto mt-5 p-3 sign-up-form">
         <form id="new-session-form">
             <div class="card-title text-center">
                 <h2>New Session</h2>
@@ -555,6 +555,66 @@ function renderNewSession() {
             </div>
 
             <br>
+        </form>
+    </div> -->
+
+    <div class="login-card" style="padding-bottom: 18px;">
+        <h1>New Session</h1>
+        <form id="new-session-form">
+
+            <label for="game-location" class="new_session_label">Location</label>
+            <div class="select_field" style="margin-bottom: 10px;">
+                <select id="game-location" name="location">
+                    <option>Bellagio</option>
+                    <option>Venetian</option>
+                    <option>Wynn</option>
+                    <option>Mirage</option>
+                    <option>Borgata</option>
+                    <option>Commerce</option>
+                    <option>Caesars Palace</option>
+                    <option>ARIA</option>
+                    <option>Home Game</option>
+                    <option>Other Casino</option>
+                </select>
+            </div>
+            <label for="stakes" class="new_session_label">Stakes</label>
+            <div class="select_field">
+                <select id="stakes" name="stakes">
+                    <option>0.1/0.2</option>
+                    <option>0.15/0.3</option>
+                    <option>0.25/0.5</option>
+                    <option>0.5/1</option>
+                    <option>1/2</option>
+                    <option>1/3</option>
+                    <option>2/4</option>
+                    <option>2/5</option>
+                    <option>3/5</option>
+                    <option>3/6</option>
+                    <option>4/8</option>
+                    <option>5/10</option>
+                    <option>10/20</option>
+                    <option>15/30</option>
+                    <option>25/50</option>
+                    <option>50/100</option>
+                    <option>100/200</option>
+                    <option>200/400</option>
+                    <option>250/500</option>
+                    <option>300/600</option>
+                    <option>400/800</option>
+                    <option>500/1000</option>
+                </select>
+            </div>
+
+            <div class="txt_field">
+                <input type="text" name="buy_in" required>
+                <label>Buy In</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="out_for" required>
+                <label>Out For</label>
+            </div>
+            
+            <input type="submit" name="submit" value="Add Session">
         </form>
     </div>
     `
@@ -660,7 +720,7 @@ function renderUpdateProfile() {
     const updateProfileDiv = document.createElement('div')
 
     updateProfileDiv.innerHTML = `
-    <div class="card w-50 m-auto mt-5 p-3 text-center sign-up-form">
+    <!-- <div class="card w-50 m-auto mt-5 p-3 text-center sign-up-form">
         <form id="update-profile-form">
             <div class="card-title">
                 <h2>Update Profile</h2>
@@ -688,6 +748,25 @@ function renderUpdateProfile() {
             <div class="d-grid gap-2 col-6 mx-auto">
                 <input type="submit" name="submit" class="btn btn-primary sign-up">
             </div>
+        </form>
+    </div> -->
+
+    <div class="login-card" style="padding-bottom: 18px;">
+        <h1>Update Profile</h1>
+        <form id="update-profile-form">
+            <div class="txt_field">
+                <input type="text" name="first_name" required value="${currentUser.first_name}">
+                <label>First Name</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="last_name" required value="${currentUser.last_name}">
+                <label>Last name</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="username" required value="${currentUser.username}">
+                <label>Username</label>
+            </div>
+            <input type="submit" name="submit" value="Update">
         </form>
     </div>
     `
